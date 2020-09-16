@@ -1,0 +1,410 @@
+/* Google Fonts Import  */
+/* LIST= Sofia, Anton, Gugi, Lato, Roboto */
+@import url('https://fonts.googleapis.com/css2?family=Anton&family=Gugi&family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&family=Sofia&display=swap');
+
+/* VARIABLES */
+:root{
+    --light-gray: #2b3032a1;
+    --primary-color: #45ccb8;
+    --border: #2b303218;
+    --text-color: #ff686b;
+    --roboto:"Roboto", sans-serif;
+    --gugi:"Gugi", cursive;
+    --sofia:"Sofia", cursive;
+    --mainSpacing: 0.1rem;                           /* Letter space between text (probably useless) */
+    --mainTransition: all 0.3s linear;              /* Speed and mode at which hidden components appear */
+}
+
+
+/* CLASSES */
+/* These classes need to be call int the openning tag of the linked HTML document */
+.primary-color{
+    color:var(--primary-color);
+}
+
+.bg-primary-color{
+    background-color:var(--primary-color);           /* "!important" is used to override the previous style class, cause "--primary-color" is used as the variable in both */
+}
+
+.text-color{
+    color:var(--text-color);
+}
+
+.font-roboto{
+    font-family:var(--roboto);
+}
+
+.lightblue{
+    color:lightblue;
+}
+
+
+/* These classes can affect HTML components without being called the html file */
+/* ----------------------------HEADER----------------------------- */
+
+/* Background */
+header{
+    position: sticky;                                                /* line1 */
+    top: 0;                                                          /* line2 */
+    z-index: 1;                                                      /* line3 (All 3 Keep header & navigation rows STATIONARY) */
+    background-color: var(--primary-color);
+    font-family: var(--roboto);
+}
+
+/* Currencty Menu (Row1 column1) */
+header .container .dropdown-toggle,
+header .container .dropdown-item{
+    font-size: 0.7em;
+}
+
+/* Title (Row1 column2) */
+header .site-title{
+    font-family: var(--gugi);
+}
+
+/* Sign In/Up (Row1 column3) */
+header .header-links a{
+    font-size: 0.9em;
+    text-decoration:non;
+    color:white;
+}
+
+/* ------------------------ Navigation Menu (Row2) ------------------- */
+/* Entire nav bar */
+header .navbar-nav{
+    padding:0.8em 0em;
+}
+
+/* Individual nav Items */
+header .navbar-nav .nav-link{
+    font-size:0.9em;
+    color:var(--light-gray) !important;
+}
+
+/* First 5 nav Items */
+header .navbar-nav .nav-item .nav-link{
+    padding:0 1.3em;
+}
+
+/* Move cart in navigation bar to the left */
+header .cart{
+    margin-right:6.5rem !important;
+    cursor: pointer;                            /* when hover over the 'div' changes user's mouse arrow to a pointer when  */
+}
+
+/* Cart ITEM Counter (Number icon rightside of shopping cart) */
+header .cart-items{
+    position: absolute;
+    top: 7px;
+    right: 121px;
+    padding: 0 5px;
+    border-radius: 30%;
+    color:white;
+    background-color: var(--primary-color);
+    
+}
+
+/* -------------------------- Carousel (Slide1) ----------------------------- */
+/* Control Bottons */
+/* (I Disabled Default Carousel Icons cause it couldnt be modified) */
+.carousel-control-prev .carousel-control-prev-icon,
+.carousel-control-next .carousel-control-next-icon{
+    opacity: 0;                                 /* component's visibility */
+    transform: opacity 1s ease;                 /* speed of change between visible and invisible */ 
+    background-image: none;                     /* Disabled image of OLD Carousel Icon */
+}
+/* displays both Carousel arrows only when mouse hovers over carousel image */
+/* .slide-btn:hover .carousel-control-prev .carousel-control-prev-icon,
+.slide-btn:hover .carousel-control-next .carousel-control-next-icon{
+    opacity: 1;
+} */
+
+/* Recreate carousel Arrow (Modifiable Version) */
+/* .carousel-control-next-icon:after{
+    content: '>';
+    font-size: 20px;                            /* Arrow size *
+    color: white;                             /* Arrow color *
+    margin: 0 1rem;
+    padding: 0.5rem 1rem;
+    border-radius: 10rem;
+    background-color: var(--primary-color);
+} */
+/* .carousel-control-prev-icon:after {
+    content: '<';
+    font-size: 20px;                          /* Arrow size *
+    color: white;                           /* Arrow color *
+    margin: 0 1rem;
+    padding: 0.5rem 1rem;
+    border-radius: 10rem;
+    background-color: var(--primary-color);
+} */
+
+/* Carousel Indicator(bottom dots) */
+.carousel-indicators li{
+    background-color:white;
+    cursor: pointer; 
+    transform: scale(1);
+    box-shadow:0px 3px 5px 1px darkgrey;        /* color behind icon */
+    display:block;
+    border-radius: 100%;                          /* Make circle */
+    width: 0.6rem;                                /* Make circle */ 
+    height: 0.6rem;                               /* Make circle */
+    padding: 0;
+    border:none;                                  /* Area around dots */ 
+    margin: 8px;                                  /* space between dots */ 
+}
+
+.carousel-indicators .active{
+    transform: scale(1.5);                      /* Increase active icon size */
+    box-shadow:0px 3px 5px 1px  darkgrey;     /* color behind icon */
+} 
+
+
+
+
+/* ----------------------------------------- Products Section------------------------------------------ */
+.products {
+    padding: 4rem 0;
+}
+
+/* Title */
+.section-title h2 {
+    text-align: center;
+    font-size: 2.5rem;
+    margin-bottom: 5rem;
+    font-family: var(--sofia);
+    text-transform: capitalize;
+}
+
+/* Grid Creation For Multiple Items */
+.products-center {
+    width: 90vw;
+    margin: 0 auto;
+    max-width: 1170px;
+    display: grid;                                                      /* Start of Grid */
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));        /* auto-fit: changes number of grid columns depending on the screen size.||| minmax(260px, 1fr): Determines the sizes of indivial grid columns, depending on space available (Ranging from min=260px to max=1fr) */
+    /*      OR (HardCode)      */
+    /* grid-template-columns: 1fr 1fr 1fr 1fr; */
+    /* grid-template-columns: repeat(4, 1fr); */
+    grid-column-gap: 1.5rem;
+    grid-row-gap: 2rem;                                                 /* End Of Grid */
+}
+
+/* container holding Image & button(icon and text) */
+.img-container {
+    position: relative;
+    overflow: hidden;
+}
+
+
+/* Button */
+.bag-btn {
+    position: absolute;
+    top: 70%;                                   /* location from the top of the picture  */
+    right: 0;                                   /* moving button to the right side, beyond sight */
+    background: var(--primary-color);
+    border: none;
+    text-transform: uppercase;
+    padding: 0.5rem 0.75rem;
+    letter-spacing: var(--mainSpacing);
+    font-weight: bold;
+    transition: var(--mainTransition);          /* Speed and mode at which hidden components appear */
+    transform: translateX(100%);                /* component's visibility. LIKE (opacity: 0) */
+    cursor: pointer;
+}
+
+/* Displays Hidden Button only when mouse hovers over product image */
+.img-container:hover .bag-btn {
+    transform: translateX(0);                  /* component's visibility. LIKE (opacity: 1) */
+}
+
+/* Change Button Color only when mouse hovers over unhidden button */
+.bag-btn:hover {
+    color: white;
+}
+
+
+/* IMAGE */
+/* Resizing Image for smaller screens + opacity change when hovered on */
+.product-img {
+    display: block;
+    width: 100%;
+    min-height: 12rem;
+    transition: var(--mainTransition);        /* SPEED and mode at which hidden components appear */
+}
+/* IMAGE Opacity change when hovered on */
+.img-container:hover .product-img {
+    opacity: 0.7;
+}
+
+/* Product Name */
+.product h3 {
+    text-transform: capitalize;
+    font-size: 1rem;
+    margin-top: 1rem;
+    letter-spacing: var(--mainSpacing);
+    text-align: center;
+}
+
+/* Product Cost */
+.product h4 {
+    margin-top: 0.7rem;
+    letter-spacing: var(--mainSpacing);
+    color: var(--primary-color);
+    text-align: center;
+    font-size: 1.1rem;
+}
+
+
+/* ----------------------------------------------- Cart ----------------------------------------------- */
+/* Cart's outter layer */
+.cart-overlay {
+    position: fixed;                                /* Allows screen to remain in same place even if the page is scrolled */
+    top: 0;
+    right: 0;                                
+    width: 100%;                                    /* line 1 */
+    height: 100%;                                   /* line 2 */
+    transition: var(--mainTransition);
+    background: rgba(81, 240, 227, 0.5);
+    z-index: 2;                                     /* Allows "cart-overlay" div to be placed on the rest of the screen */
+    visibility: hidden;                             /* Hide cart by default */
+}
+/* Actual Cart */
+.realcart {
+    position: fixed;
+    top: 0;
+    right: 0;
+    width: 100%;
+    height: 100%;
+    overflow: scroll;                               /* Allows scrolling through cart background to see all items in cart */
+    z-index: 3;                                     /* Allows actual cart on right side of screen to cover "cart-overlay" div */
+    background: rgb(221, 231, 230);
+    padding: 1.5rem;
+    transition: var(--mainTransition);              /* SPEED and mode at which hidden components appear */
+    transform: translateX(100%);                    /* component's visibility. LIKE (opacity: 0) OFF */
+}
+
+/* <<<<<< JavaScript functions (Both called by showCart & hideCart methods in js file) >>>>> */
+/* used to open and close cart Window */
+.showCart {
+    transform: translateX(0);                       /* component's visibility. LIKE (opacity: 1) ON */
+}
+
+.transparentBcg {
+    visibility: visible;                            /* changes visibility component of ".cart-overlay" (above method) from hidden to visible */
+}
+/* <<<<<<  -------------------------------------------------------- >>>>> */
+
+
+/* Actual CART (dimensions) */
+@media screen and (min-width: 768px) {              /* If the browser window is 768px or smaller */
+    .realcart {
+    width: 30vw;                                    /* (Default View Width) make "realcart" div a maximum of 30% of the screen */
+    min-width: 450px;                               /* (small screens) Minimum width  */
+    }
+}
+
+/* Close cart Icon */
+.close-cart {
+    font-size: 1.7rem;
+    cursor: pointer;
+}
+
+/* cart Title */
+.realcart h2 {
+    text-transform: capitalize;
+    text-align: center;
+    letter-spacing: var(--mainSpacing);
+    margin-bottom: 2rem;                         /* space between Title and next line */
+}
+
+/* cart item GRID */
+.cart-item {
+    display: grid;
+    align-items: center;
+    grid-template-columns: auto 1fr auto;
+    grid-column-gap: 1.5rem;
+    margin: 1.5rem 0;
+}
+
+/* cart item IMAGE */
+.cart-item img {
+    width: 75px;
+    height: 75px;
+}
+
+/* cart item NAME */
+.cart-item h4 {
+    font-size: 0.95rem;
+    text-transform: capitalize;
+    /* letter-spacing: var(--mainSpacing); */
+}
+
+/* cart item COST */
+.cart-item h5 {
+    margin: 0.5rem 0;
+    font-size: 0.85rem;
+    letter-spacing: var(--mainSpacing);
+}
+
+/* Number of Units of an individual cart item */
+.item-amount {
+    text-align: center;
+    margin-top: -0.2rem;
+    margin-bottom: -0.2rem;
+}
+
+/* cart item REMOVE */
+.remove-item {
+    color: grey;
+    cursor: pointer;
+}
+
+/* Increase & Decrease ARROWS for number of Units of an individual cart item */
+.fa-chevron-up,
+.fa-chevron-down {
+    color: var(--primary-color);
+    cursor: pointer;
+}
+
+/* Cart Footer (Total & clear cart button) */
+.cart-footer {
+    margin-top: 2rem;
+    letter-spacing: var(--mainSpacing);
+    text-align: center;
+}
+
+/* Cart Footer (Total)*/
+.cart-footer h3 {
+    text-transform: capitalize;
+    font-weight: normal;
+    font-family: var(--roboto);
+    font-size:1.4em;
+    margin-bottom: 1rem;
+}
+
+/* CLEAR CART botton */
+.clear-cart {
+    padding: 1rem 3rem;
+    text-transform: uppercase;
+    letter-spacing: var(--mainSpacing);
+    font-size: 1rem;
+    background: var(--primary-color);
+    color: black;
+    border: 1px solid var(--primary-color);
+    transition: var(--mainTransition);
+    cursor: pointer;
+}
+
+
+
+/*  
+    --roboto
+    --gugi
+    --sofia 
+    font-size:0.9em;
+    font-family: var(--gugi);
+    font-weight: normal;
+    background-color: var(--primary-color);
+    */
+
